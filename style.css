@@ -1,0 +1,148 @@
+body {
+    width: 100%;
+    height: 100vh;
+    /* 100% da altura da viewport */
+    background-color: yellowgreen;
+    overflow: hidden;
+}
+
+.dino {
+    position: absolute;
+    bottom: 0;
+    background-image: url(dino.png);
+    width: 60px;
+    height: 60px;
+}
+
+.cactus {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    bottom: 0;
+    background-image: url(cactus.png);
+}
+
+.power-up {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    bottom: 100px;
+    /* Inicialmente fora do alcance do Dino */
+    background-image: url('life.png');
+    /* Aqui, você pode usar uma imagem representando o power-up */
+    background-size: cover;
+    display: none;
+    /* Ele será mostrado aleatoriamente */
+}
+
+
+.game-over {
+    text-align: center;
+    color: #666;
+    margin: 50px 0;
+    font-family: arial;
+}
+
+@keyframes slideright {
+    from {
+        background-position: 70000%;
+    }
+
+    to {
+        background-position: 0%;
+    }
+}
+
+.background {
+    position: absolute;
+    bottom: 0px;
+    background-image: url('background.png');
+    background-repeat: repeat-x;
+    animation: slideright 600s infinite linear;
+    -webkit-animation: slideright 600s infinite linear;
+    width: 100%;
+    height: 200px;
+    background-color: #000;
+    overflow: hidden;
+    /* Para evitar que os elementos excedam a div */
+}
+
+.hud {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+.score {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.health-bar {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 200px;
+    height: 30px;
+    border: 2px solid #000;
+    background-color: #f1f1f1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.health {
+    height: 100%;
+    background-color: green;
+    color: white;
+    text-align: center;
+    line-height: 30px;
+    width: 100%;
+    transition: width 0.3s;
+}
+
+
+.restart-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px 20px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.damage {
+    animation: blink 0.1s step-end 5;
+    /* Efeito de piscar ao ser atingido */
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+.damage-message {
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 30px;
+    color: red;
+    font-weight: bold;
+    z-index: 10;
+    animation: fade-out 0.5s forwards;
+}
+
+@keyframes fade-out {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
